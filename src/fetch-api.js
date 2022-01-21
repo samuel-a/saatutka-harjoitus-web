@@ -99,7 +99,6 @@ async function fetchCurrentWeather(city) {
 //forecastData object that contains 5 data for the following hours wrt current
 //time with 3 hour intervals (such that a request made at 11.53 should then
 //contain data for 15.00, 18.00, 21.00, 00.00 and 03.00).
-//async function fetchForecast(city) {
 async function fetchForecast(city) {
   const id = idLookup[city];
   const requestString = `https://api.openweathermap.org/data/2.5/forecast?id=${id}&cnt=5&lang=fi&appid=${API_KEY}`;
@@ -132,4 +131,4 @@ async function fetchForecast(city) {
   }
 }
 
-export default { fetchCurrentWeather, fetchForecast };
+export {fetchCurrentWeather, fetchForecast}
