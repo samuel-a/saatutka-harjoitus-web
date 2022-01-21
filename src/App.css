@@ -1,5 +1,11 @@
+body {
+  background-color: #f8f9fa;
+}
+
 .App {
   text-align: center;
+  justify-content: center;
+  font-family: "Arial";
 }
 
 .App-logo {
@@ -35,4 +41,203 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.TopPadding {
+  display: flex;
+  align-self: stretch;
+  background-color: #00a5e5;
+  height: 20px;
+}
+
+.topBar {
+  display: flex;
+  border: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #e6e6e6;
+  margin-top: 0;
+  height: 90px;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.topBarText {
+  font-size: 23pt;
+  color: #262626;
+  margin-top: 36px;
+}
+
+.dropdownText {
+  font-size: 13pt;
+  color: #262626;
+}
+
+.dropdownButton {
+  min-width: "90%";
+  max-width: 400px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-radius: 10px;
+  border-color: #e6e6e6;
+  margin-top: 20px;
+}
+
+.currentWeatherView {
+  display: flex;
+  flex-direction: column;
+  min-width: 85%;
+  max-width: 400px;
+  min-height: 150px;
+  max-height: 400px;
+  background-color: white;
+  justify-content: space-between;
+  border-width: 1px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-top: 24px;
+}
+
+.forecastWeatherViewTop {
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  border: solid;
+  border-width: 1px 1px 0px 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-color: #e6e6e6;
+  padding-right: 2.5px;
+  padding-left: 2.5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 100%;
+  margin-left: 0.5px;
+  margin-right: 0.5px;
+}
+
+.forecastWeatherViewBottom {
+  max-height: 34%;
+  flex-direction: column;
+  background-color: #e5f6fd;
+  justify-content: space-between;
+  align-items: center;
+  border-width: 1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: solid;
+  border-color: #e6e6e6;
+  border-width: 1px;
+  padding-right: 2.5px;
+  padding-left: 2.5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  max-width: 60;
+  min-height: 50;
+  margin-left: 0.5px;
+  margin-right: 0.5px;
+}
+
+.forecastWeatherViewContainer {
+  max-height: 170px;
+  width: 18%;
+}
+
+.box {
+  width: 50px;
+  height: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.headline {
+  font-size: 18pt;
+  color: #ffffff;
+}
+
+.cityText {
+  font-size: 19pt;
+  color: #262626;
+  margin: 0;
+}
+
+.dateText {
+  font-size: 15pt;
+  color: #262626;
+  margin: 0;
+}
+
+.timeText {
+  font-size: 13pt;
+  color: #70757a;
+  margin: 0;
+}
+
+.descriptionText {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 13pt;
+  color: #70757a;
+}
+
+.temperatureText {
+  font-size: 26pt;
+  color: #262626;
+  margin: 0;
+}
+
+.smallTemperatureText {
+  font-size: 15pt;
+  color: #70757a;
+  margin: 0;
+}
+
+.specificsText {
+  font-size: 13pt;
+  color: #70757a;
+  margin: 0;
+}
+
+.smallSpecificsText {
+  font-size: 10pt;
+  color: #70757a;
+  margin: 2px;
+}
+
+.verticalAlignerStart {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.verticalAlignerEnd {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.forecastRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-width: 85%;
+  max-width: 400px;
+  margin-top: 7px;
+  margin-bottom: 5px;
 }
