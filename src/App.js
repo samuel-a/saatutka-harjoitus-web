@@ -50,15 +50,6 @@ function App() {
   );
 }
 
-const ContextCheck = () => {
-  const { selection, setSelection } = useContext(selectionContext);
-  return (
-    <div>
-      <p>Current selection as according to context: {selection}</p>
-    </div>
-  );
-};
-
 const TopBar = () => {
   return (
     <div className="topBar">
@@ -67,6 +58,8 @@ const TopBar = () => {
   );
 };
 
+// Dropdown menu that communicates the user's selection back to other components
+// within its Provider's context.
 const DropDown = () => {
   const { selection, setSelection } = useContext(selectionContext);
   const [selectedOption, setSelectedOption] = useState(cities[0]);
@@ -81,6 +74,7 @@ const DropDown = () => {
   );
 };
 
+// Picks between showing results for all or just one city based on selection.
 const ViewPicker = () => {
   const { selection, setSelection } = useContext(selectionContext);
 
