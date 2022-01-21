@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useContext, useEffect, useState } from "react";
-//import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Dropdown from "react-dropdown";
 import { fetchCurrentWeather, fetchForecast } from "./fetch";
@@ -61,7 +60,7 @@ const TopBar = () => {
 // Dropdown menu that communicates the user's selection back to other components
 // within its Provider's context.
 const DropDown = () => {
-  const { selection, setSelection } = useContext(selectionContext);
+  const { setSelection } = useContext(selectionContext);
   const [selectedOption, setSelectedOption] = useState(cities[0]);
 
   const handleChange = (selectedOption) => {
@@ -76,7 +75,7 @@ const DropDown = () => {
 
 // Picks between showing results for all or just one city based on selection.
 const ViewPicker = () => {
-  const { selection, setSelection } = useContext(selectionContext);
+  const { selection } = useContext(selectionContext);
 
   if (selection === cities[0]) {
     return (
@@ -106,25 +105,24 @@ const ViewPicker = () => {
 const CurrentWeatherView = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
-  const { selection, setSelection } = useContext(selectionContext);
+  const { selection } = useContext(selectionContext);
 
-  const getData = async () => {
-    const _data = await fetchCurrentWeather(props.city);
-    setData(_data);
-    setLoading(false);
-    console.log("Got data: ", _data);
-  };
-
-  // Testing (non fetching) version of getData
-  // const getData = () => {
-  //   const _data = fetchCurrentWeather(props.city);
+  // const getData = async () => {
+  //   const _data = await fetchCurrentWeather(props.city);
   //   setData(_data);
   //   setLoading(false);
-  // }
+  //   console.log("Got data: ", _data);
+  // };
 
   useEffect(() => {
+    const getData = async () => {
+      const _data = await fetchCurrentWeather(props.city);
+      setData(_data);
+      setLoading(false);
+      console.log("Got data: ", _data);
+    };
     getData();
-  }, [selection]); //Fetch on re-renders i.e. when the selection changes.
+  }, [selection, props.city]); //Fetch on re-renders i.e. when the selection changes.
 
   return loading ? (
     <p>Loading...</p>
@@ -176,34 +174,24 @@ const CurrentWeatherView = (props) => {
 const ForecastWeatherViewContainer = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
-  const { selection, setSelection } = useContext(selectionContext);
-
-  const getData = async () => {
-    const _data = await fetchForecast(props.city);
-    setData(_data);
-    setLoading(false);
-  };
-
-  // Testing (non fetching) version of getData
-  // const getData = () => {
-  //   const _data = fetchForecast(props.city);
-  //   setData(_data);
-  //   setLoading(false);
-  // }
+  const { selection } = useContext(selectionContext);
 
   useEffect(() => {
+    const getData = async () => {
+      const _data = await fetchForecast(props.city);
+      setData(_data);
+      setLoading(false);
+    };
     getData();
-  }, [selection]); //Fetch on re-renders i.e. when the selection changes.
+  }, [selection, props.city]); //Fetch on re-renders i.e. when the selection changes.
 
   return loading ? (
     <p>Loading...</p>
   ) : (
     <div className="forecastRow">
-      <ForecastWeatherView data={data[0]} />
-      <ForecastWeatherView data={data[1]} />
-      <ForecastWeatherView data={data[2]} />
-      <ForecastWeatherView data={data[3]} />
-      <ForecastWeatherView data={data[4]} />
+      {data.map( _data =>
+        <ForecastWeatherView key={_data.time} data={_data} />
+      )}
     </div>
   );
 };
