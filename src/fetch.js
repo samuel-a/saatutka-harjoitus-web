@@ -2,11 +2,7 @@
 import config from "./api-config.json";
 const API_KEY = config.key;
 console.log(API_KEY);
-// React Native doesn't seem to play nice with ECMA-402 Date's (i.e.
-// toLocaleDateString produces non-working results) so the date-fns library is
-// required here.
-//import { format } from "date-fns";
-//import { fi } from "date-fns/locale";
+
 
 const idLookup = {
   Helsinki: 658225,
