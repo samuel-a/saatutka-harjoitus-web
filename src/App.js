@@ -107,13 +107,6 @@ const CurrentWeatherView = (props) => {
   const [data, setData] = useState();
   const { selection } = useContext(selectionContext);
 
-  // const getData = async () => {
-  //   const _data = await fetchCurrentWeather(props.city);
-  //   setData(_data);
-  //   setLoading(false);
-  //   console.log("Got data: ", _data);
-  // };
-
   useEffect(() => {
     const getData = async () => {
       const _data = await fetchCurrentWeather(props.city);
