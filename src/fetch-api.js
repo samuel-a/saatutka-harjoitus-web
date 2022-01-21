@@ -59,7 +59,6 @@ class ForecastData {
 // Given the name of a city as a string perform a OWM request for this city and
 // return an currentData object that contains the weather data for the current
 // time.
-//async
 async function fetchCurrentWeather(city) {
   const id = idLookup[city];
   const requestString = `https://api.openweathermap.org/data/2.5/weather?id=${id}&lang=fi&appid=${API_KEY}`;
@@ -103,15 +102,16 @@ async function fetchCurrentWeather(city) {
 //async function fetchForecast(city) {
 async function fetchForecast(city) {
   const id = idLookup[city];
-  const requestString = `https://api.openweathermap.org/data/2.5/forecast?id=${id}&cnt=6&lang=fi&appid=${API_KEY}`;
+  const requestString = `https://api.openweathermap.org/data/2.5/forecast?id=${id}&cnt=5&lang=fi&appid=${API_KEY}`;
   const request = new Request(requestString);
   try {
     const _response = await fetch(request);
     const response = await _response.json();
 
-    const tail = (arr) => (arr.length > 1 ? arr.slice(1) : arr);
-    const forecast = tail(response.list).map((data) => {
-      let dt = new Date(data.dt * 1000);
+    //const tail = (arr) => (arr.length > 1 ? arr.slice(1) : arr);
+    //const forecast = tail(response.list).map((data) => {
+    const forecast = response.list.map((data) => {
+    let dt = new Date(data.dt * 1000);
       const _time = `${("0" + dt.getHours()).slice(-2)}:${(
         "0" + dt.getMinutes()
       ).slice(-2)}`;
@@ -132,4 +132,4 @@ async function fetchForecast(city) {
   }
 }
 
-export { fetchCurrentWeather, fetchForecast };
+export default { fetchCurrentWeather, fetchForecast };
